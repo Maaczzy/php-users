@@ -1,6 +1,7 @@
 <?php
     require 'config.inc.php';
-
+    readfile('header.tmpl.html');
+    
     $name = '';
     $gender = '';
     $color = '';
@@ -35,8 +36,6 @@
             $db->close();
         }
     }
-
-    readfile('header.tmpl.html');
 ?>
 
 <div class="container mt-5">

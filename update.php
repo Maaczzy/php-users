@@ -53,41 +53,13 @@
     readfile('header.tmpl.html');
 ?>
 
-<!-- <form action="" method="post">
-    User Name: <input type="text" name="name" value="<?php echo htmlspecialchars($name, ENT_QUOTES); ?>"><br>
-    Gender: 
-    <input type="radio" name="gender" value="f" <?php if($gender === 'f'){echo ' checked';} ?>> Female
-    <input type="radio" name="gender" value="m" <?php if($gender === 'm'){echo ' checked';} ?>> Male
-    <input type="radio" name="gender" value="o" <?php if($gender === 'o'){echo ' checked';} ?>> Other <br>
-    Favourite color:
-    <select name="color">
-        <option value="">Please select</option>
-        <option value="#F00"<?php 
-        if($color === '#F00'){
-            echo ' selected';
-        }
-        ?>>Red</option>
-        <option value="#0F0" <?php 
-        if($color === '#0F0'){
-            echo ' selected';
-        } 
-        ?>>Green</option>
-        <option value="#00F" <?php 
-        if($color === '#00F'){
-            echo ' selected';
-        } 
-        ?>>Blue</option>
-    </select><br>
-    <input type="submit" name="submit" value="Update">
-</form> -->
-
 <div class="container mt-5">
     <div class="row" style="align-items: center;">
         <div class="col-4" style="display: flex; justify-content: center;">
             <img src="img/hero.jpg" alt="Register" width="100%">
         </div>
         <div class="col-8">
-            <h1 class="mb-3">Register user</h1>
+            <h1 class="mb-3">Edit user</h1>
             <form action="" method="POST">
                 <div class="mb-3">
                     <label for="name" class="form-label">Username:</label>
