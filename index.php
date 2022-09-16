@@ -1,10 +1,11 @@
 <?php
     require 'config.inc.php';
     readfile('header.tmpl.html');
-    
+
     $name = '';
     $gender = '';
     $color = '';
+    $password = '';
 
     if(isset($_POST['submit'])){
         $ok = true;
@@ -13,6 +14,11 @@
             $ok = false;
         } else{
             $name = $_POST['name'];
+        };
+        if(!isset($_POST['password']) || $_POST['password'] === ''){
+            $ok = false;
+        } else {
+            $color = $_POST['password'];
         };
         if(!isset($_POST['gender']) || $_POST['gender'] === ''){
             $ok = false;
@@ -26,11 +32,14 @@
         };
 
         if($ok){
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
             $db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-            $sql = sprintf("INSERT INTO users (name, gender, color) VALUES ('%s', '%s', '%s')", 
+            $sql = sprintf("INSERT INTO users (name, gender, color, hash) VALUES ('%s', '%s', '%s', '%s')", 
                             $db->real_escape_string($name),
                             $db->real_escape_string($gender),
-                            $db->real_escape_string($color));
+                            $db->real_escape_string($color),
+                            $hash);
             $db->query($sql);
             echo '<p>User added.</p>';
             $db->close();
@@ -51,7 +60,7 @@
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="usernameField" value="<?php echo htmlspecialchars($name, ENT_QUOTES); ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password :</label>
+                    <label for="password" class="form-label">Password :</label>
                     <input type="password" name="password" class="form-control" id="password">
                 </div>
                 <div class="mb-3">
