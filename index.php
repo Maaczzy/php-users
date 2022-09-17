@@ -50,7 +50,7 @@
 <div class="container mt-5">
     <div class="row" style="align-items: center;">
         <div class="col-4" style="display: flex; justify-content: center;">
-            <img src="img/hero.jpg" alt="Register" width="100%">
+            <img src="img/hero.png" alt="Register" width="100%">
         </div>
         <div class="col-8">
             <h1 class="mb-3">Register user</h1>

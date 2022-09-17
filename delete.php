@@ -5,6 +5,8 @@
 <div class="container mt-5">
     <?php
 
+    require 'auth.inc.php';
+
     if(isset($_GET['id']) && ctype_digit($_GET['id'])){
         $id = $_GET['id'];
     } else {

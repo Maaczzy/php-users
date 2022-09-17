@@ -3,11 +3,13 @@
 
     readfile('header.tmpl.html');
 
+    session_start();
+
     $message = '';
 
     if(isset($_POST['name']) && isset($_POST['password'])){
         $db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-        $sql = sprintf("SELECT hash FROM users WHERE name='%s'",
+        $sql = sprintf("SELECT * FROM users WHERE name='%s'",
                 $db->real_escape_string($_POST['name']));
         $result = $db->query($sql);
         $row = $result->fetch_object();
@@ -15,6 +17,8 @@
             $hash = $row->hash;
             if(password_verify($_POST['password'], $hash)){
                 $message = 'Login succesful.';
+                $_SESSION['username'] = $row->name;
+                $_SESSION['isAdmin'] = $row->isAdmin;
             } else {
                 $message = 'Login failed.';
             }
@@ -28,7 +32,7 @@
 <div class="container mt-5">
     <div class="row" style="align-items: center;">
         <div class="col-4" style="display: flex; justify-content: center;">
-            <img src="img/hero.jpg" alt="Login" width="100%">
+            <img src="img/hero.png" alt="Login" width="100%">
         </div>
         <div class="col-8">
             <h1 class="mb-3">Login</h1>
