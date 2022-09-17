@@ -18,7 +18,7 @@
         if(!isset($_POST['password']) || $_POST['password'] === ''){
             $ok = false;
         } else {
-            $color = $_POST['password'];
+            $password = $_POST['password'];
         };
         if(!isset($_POST['gender']) || $_POST['gender'] === ''){
             $ok = false;
@@ -39,7 +39,7 @@
                             $db->real_escape_string($name),
                             $db->real_escape_string($gender),
                             $db->real_escape_string($color),
-                            $hash);
+                            $db->real_escape_string($hash));
             $db->query($sql);
             echo '<p>User added.</p>';
             $db->close();

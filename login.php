@@ -7,16 +7,12 @@
 
     if(isset($_POST['name']) && isset($_POST['password'])){
         $db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-        // $sql = sprintf("SELECT hash FROM users WHERE name='%s'",
-        //         $db->real_escape_string($_POST['name']));
-        $name = $_POST['name'];
-        $sql = "SELECT hash FROM users where name='$name'";
+        $sql = sprintf("SELECT hash FROM users WHERE name='%s'",
+                $db->real_escape_string($_POST['name']));
         $result = $db->query($sql);
         $row = $result->fetch_object();
-        var_dump($row);
         if($row != null){
             $hash = $row->hash;
-            var_dump($hash);
             if(password_verify($_POST['password'], $hash)){
                 $message = 'Login succesful.';
             } else {
