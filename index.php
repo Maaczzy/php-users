@@ -56,7 +56,7 @@
             <h1 class="mb-3">Register user</h1>
             <form action="" method="POST">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Username:</label>
+                    <label for="name" class="form-label">Username :</label>
                     <input type="text" class="form-control" name="name" id="name" aria-describedby="usernameField" value="<?php echo htmlspecialchars($name, ENT_QUOTES); ?>">
                 </div>
                 <div class="mb-3">
